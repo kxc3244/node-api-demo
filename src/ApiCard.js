@@ -1,14 +1,27 @@
 import publicAPIList from "./publicAPIList.json";
 import {Card, CardBody,CardTitle, CardText,Button } from 'reactstrap';
+import React, { useState, useEffect } from 'react';
+import axios from "axios"
 
 
 function ApiCard() {
 
+
+  const [data, setData] = useState([])
+
+    useEffect(() => {
+        axios.get('http://localhost:8080')
+        .then((_res) => {
+            console.log(_res.data);
+            setData(_res.data.entries)
+          
+        })
+      }, [])
   console.log(publicAPIList, 'CHECK')
 
   return (
     <div>
-        {publicAPIList.entries.map((apiItem, index) => {
+        {data.map((apiItem, index) => {
           return (
             <Card
               body
