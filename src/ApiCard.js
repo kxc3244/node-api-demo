@@ -10,7 +10,7 @@ function ApiCard() {
   const [data, setData] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:8080')
+        axios.get('https://us-central1-windy-shoreline-332322.cloudfunctions.net/publicAPI')
         .then((_res) => {
             console.log(_res.data);
             setData(_res.data.entries)
